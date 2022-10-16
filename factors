@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+"""
+    Factorizes as many numbers as possible into a product
+    of two smaller numbers.
+"""
+import sys
+
+# open the file provided in 'read' mode
+with open(sys.argv[1], "r") as fp:
+    Lines = fp.readlines()
+    # create a list of number lines as read
+    num_list = [int(i) for i in Lines]
+    num_list.sort()
+
+    for num in num_list:
+        d = 2
+        while d < num:
+            if num % d == 0:
+                f = num // d
+                print("{}={}*{}".format(num, f, d))
+                break
+            else:
+                d += 1

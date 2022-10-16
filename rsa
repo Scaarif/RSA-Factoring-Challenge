@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+""" Finds two primes p and q for a given n, such that n = p x q """
+import sys
+from math import ceil, sqrt
+
+
+# open the file in 'read' mode
+with open(sys.argv[1], "r") as fp:
+    n = int(fp.readline())
+    # check if n is even
+    if n % 2 == 0:
+        print("{}={}*{}".format(n, int(n / 2), 2))
+    # else n is odd
+    else:
+        a = int(ceil(sqrt(n)))
+        while (True):
+            b1 = a * a - n
+            b = int(sqrt(b1))
+            if (b * b == b1):
+                break
+            else:
+                a += 1
+        print("{}={}*{}".format(n, a + b, a - b))
